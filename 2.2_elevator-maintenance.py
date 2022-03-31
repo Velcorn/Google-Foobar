@@ -1,6 +1,6 @@
 def solution(l):
     # Good luck!
-    return [('.'.join(str(i) for i in il)) for il in sorted([[int(i) for i in il] for il in [e.split(".") for e in l]])]
+    return [('.'.join(str(i) for i in il)) for il in sorted([[int(e) for e in el] for el in [e.split(".") for e in l]])]
 
 
 if __name__ == '__main__':
