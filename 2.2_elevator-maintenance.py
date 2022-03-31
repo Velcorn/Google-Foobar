@@ -1,5 +1,6 @@
 def solution(l):
-    return sorted(l)
+    # Good luck!
+    return [('.'.join(str(i) for i in il)) for il in sorted([[int(i) for i in il] for il in [e.split(".") for e in l]])]
 
 
 if __name__ == '__main__':
