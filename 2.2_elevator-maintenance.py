@@ -1,6 +1,6 @@
 def solution(l):
-    # Good luck!
-    return [('.'.join(str(i) for i in il)) for il in sorted([[int(e) for e in el] for el in [e.split(".") for e in l]])]
+    # Split version numbers into lists of digits, cast them to int, sort and join them back together
+    return [('.'.join(str(i) for i in il)) for il in sorted([[int(d) for d in dl] for dl in [v.split(".") for v in l]])]
 
 
 if __name__ == '__main__':
