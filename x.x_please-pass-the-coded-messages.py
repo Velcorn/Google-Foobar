@@ -9,20 +9,17 @@ def solution(l):
     r = b = sum(l) % 3
     # Loop while rest is not 0
     while b != 0:
-        # If rest is 1, remove rest from list and return list
+        # If rest is in l, remove from l and return l
         if b in l:
             l.remove(b)
             break
         # If rest lte 8, increment b
         elif b <= 8:
             b += 3
-        # Else determine two elements in list that sum to rest
         else:
-            # Get sublist of l only containing elements less than r
-            sl = [i < r for i in l]
-            # Test combinations of two elements of sublist
-            for n in combinations(sl, 2):
-                # If sum of elements in combination equals r, remove elements from list and return list
+            # Iterate over combinations of two elements of l in ascending order
+            for n in combinations(sorted(l), 2):
+                # If sum of elements has same r as l, remove them and return l
                 if sum(n) % 3 == r:
                     l.remove(n[0])
                     l.remove(n[1])
