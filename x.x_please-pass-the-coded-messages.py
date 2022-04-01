@@ -19,8 +19,8 @@ def solution(l):
         else:
             # Iterate over subsets of two elements of l in ascending order
             for n in combinations(sorted(l), 2):
-                # If sum of elements is r, remove them
-                if sum(n) == r:
+                # If sum of elements has same r, remove them
+                if sum(n) % 3 == r:
                     l.remove(n[0])
                     l.remove(n[1])
                     b = 0
@@ -49,6 +49,5 @@ def solution_dumb(l):
 
 
 if __name__ == '__main__':
-    print(solution([5, 2]))
-    print(solution([3, 1, 4, 1, 1, 1]))
+    print(solution([3, 1, 4, 1]))
     print(solution([3, 1, 4, 1, 5, 9]))
