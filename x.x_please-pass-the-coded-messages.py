@@ -12,7 +12,7 @@ def helper(l, r, n):
 
 
 def solution(l):
-    if l in [[0], [1], [2]]:
+    if sum(l) < 3:
         return 0
     l = sorted(l, reverse=True)
     r = sum(l) % 3
