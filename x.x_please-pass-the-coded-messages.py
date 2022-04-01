@@ -8,7 +8,7 @@ def solution(l):
     # Get rest when divided by 3
     r = b = sum(l) % 3
     # Loop while rest is not 0
-    while b != 0:
+    while b > 0:
         # If rest is in l, remove from l and return l
         if b in l:
             l.remove(b)
@@ -25,6 +25,7 @@ def solution(l):
                     l.remove(n[1])
                     b = 0
                     break
+            # If removing two not possible, no solution exists
             if b != 0:
                 b = 0
                 l = []
