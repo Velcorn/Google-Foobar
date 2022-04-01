@@ -9,17 +9,17 @@ def solution(l):
     r = b = sum(l) % 3
     # Loop while rest is not 0
     while b > 0:
-        # If rest is in l, remove from l and return l
+        # If rest is in l simply remove it
         if b in l:
             l.remove(b)
             break
-        # If rest lte 8, increment b
+        # If rest lte 8, increment
         elif b <= 8:
             b += 3
         else:
             # Iterate over subsets of two elements of l in ascending order
             for n in combinations(sorted(l), 2):
-                # If sum of elements is r, remove them and return l
+                # If sum of elements is r, remove them
                 if sum(n) == r:
                     l.remove(n[0])
                     l.remove(n[1])
