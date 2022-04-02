@@ -10,15 +10,14 @@ def solution(l):
         return 0
     # Get rest and residual classes of mod 3
     r = sum(l) % 3
-    rc = [r, r+3, r+6]
     # If sum of elements in list is already divisible by 3, pass
     if r == 0:
         pass
     # Elif any residual class is in l, simply remove it
-    elif any(r in l for r in rc):
-        for r in rc:
+    elif any(rc in l for rc in [r, r+3, r+6]):
+        for rc in [r, r+3, r+6]:
             try:
-                l.remove(r)
+                l.remove(rc)
             except ValueError:
                 pass
     # Else check residual classes and remove the smallest combination of two elements
@@ -50,7 +49,7 @@ def solution(l):
                 l = remove_elements(l, 1, 7)
             else:
                 l = remove_elements(l, 4, 4)
-    # Return list as string in descending order
+    # Return list as int in descending order
     l = sorted(l, reverse=True)
     return int("".join(str(x) for x in l)) if l else 0
 
