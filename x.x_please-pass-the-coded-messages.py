@@ -5,19 +5,21 @@ def remove_elements(l, e1, e2):
 
 
 def solution(l):
-    # If sum of elements in list is less than 3, return empty 0
+    # Get residue and residue classes for sum of l mod 3
+    r = sum(l) % 3
+    rcs = [r, r+3, r+6]
+    # If sum of elements is less than 3, return 0
     if sum(l) < 3:
         return 0
-    # Get rest and residual classes of mod 3
-    r = sum(l) % 3
-    # If sum of elements in list is already divisible by 3, pass
-    if r == 0:
+    # Elif sum of elements is already divisible by 3, pass
+    elif r == 0:
         pass
-    # Elif any residual class is in l, simply remove it
-    elif any(rc in l for rc in [r, r+3, r+6]):
-        for rc in [r, r+3, r+6]:
+    # Elif any rc is in l, simply remove the smallest
+    elif any(rc in l for rc in rcs):
+        for rc in rcs:
             if rc in l:
                 l.remove(rc)
+                break
     # Else check rcs and remove the smallest combination of two elements with the same rc
     else:
         if r == 1:
@@ -57,7 +59,7 @@ def solution(l):
 
 
 if __name__ == '__main__':
-    print(solution([5, 5]))
-    print(solution([0, 5, 5]))
+    print(solution([1, 1, 1, 4]))
+    print(solution([9, 5, 5]))
     print(solution([3, 1, 4, 1]))
     print(solution([3, 1, 4, 1, 5, 9]))
