@@ -1,6 +1,14 @@
+from itertools import combinations
+
+
 def solution(l):
-    pass
+    lts = set()
+    for c in combinations(l, 3):
+        if (c[2] / c[1]).is_integer() and (c[1]/c[0]).is_integer():
+            lts.add(c)
+    return len(lts)
 
 
 if __name__ == '__main__':
-    print(solution([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+    print(solution([1, 1, 1]))
+    print(solution([1, 2, 3, 4, 5, 6]))
