@@ -16,11 +16,9 @@ def solution(l):
     # Elif any residual class is in l, simply remove it
     elif any(rc in l for rc in [r, r+3, r+6]):
         for rc in [r, r+3, r+6]:
-            try:
+            if rc in l:
                 l.remove(rc)
-            except ValueError:
-                pass
-    # Else check residual classes and remove the smallest combination of two elements
+    # Else check rcs and remove the smallest combination of two elements with the same rc
     else:
         if r == 1:
             if l.count(2) >= 2:
@@ -34,10 +32,14 @@ def solution(l):
         elif r == 2:
             if l.count(1) >= 2:
                 l = remove_elements(l, 1, 1)
+            elif 1 in l and 4 in l:
+                l = remove_elements(l, 1, 4)
             elif 1 in l and 7 in l:
                 l = remove_elements(l, 1, 7)
             elif l.count(4) >= 2:
                 l = remove_elements(l, 4, 4)
+            elif 4 in l and 7 in l:
+                l = remove_elements(l, 4, 7)
             else:
                 l = remove_elements(l, 7, 7)
         elif r == 5:
@@ -56,6 +58,6 @@ def solution(l):
 
 if __name__ == '__main__':
     print(solution([5, 5]))
-    print(solution([9, 5, 2]))
+    print(solution([0, 5, 5]))
     print(solution([3, 1, 4, 1]))
     print(solution([3, 1, 4, 1, 5, 9]))
