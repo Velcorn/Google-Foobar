@@ -59,7 +59,5 @@ def solution(l):
 
 
 if __name__ == '__main__':
-    print(solution([1, 1, 1, 4]))
-    print(solution([9, 5, 5]))
     print(solution([3, 1, 4, 1]))
     print(solution([3, 1, 4, 1, 5, 9]))
