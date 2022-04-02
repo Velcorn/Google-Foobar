@@ -14,8 +14,7 @@ def solution(l):
         # Update residue
         r = sum(l) % 3
     # Return list as int in descending order
-    l = sorted(l, reverse=True)
-    return int("".join(str(x) for x in l)) if l else 0
+    return int("".join(str(x) for x in sorted(l, reverse=True))) if l else 0
 
 
 if __name__ == '__main__':
