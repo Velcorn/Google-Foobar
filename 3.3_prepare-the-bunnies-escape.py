@@ -1,15 +1,16 @@
 def solution(map):
     # Simple BFS with 1 optional removal of a wall
-    queue = [[(0, 0)]]
+    queue = [[[True], [(0, 0)]]]
     visited = set()
-    removal = True
     # While queue, if current node is goal, return len of path, if node already visited, continue
     # If not, add all possible moves to queue, and mark as visited; optionally remove a wall - single-use
     while queue:
-        path = queue.pop(0)
+        rpath = queue.pop(0)
+        path = rpath[1]
+        removal = rpath[0]
         x, y = path[-1]
         if (x, y) == (len(map) - 1, len(map[0]) - 1):
-            return len(path)
+            return len(path)-1
         if (x, y) in visited:
             continue
         visited.add((x, y))
@@ -19,9 +20,10 @@ def solution(map):
             nx, ny = x + dx, y + dy
             if 0 <= nx < len(map) and 0 <= ny < len(map[0]):
                 if map[nx][ny] == 0:
-                    queue.append(path + [(nx, ny)])
+                    queue.append([[True], [path + (nx, ny)]])
+                    print (queue)
                 if map[nx][ny] == 1 and removal:
-                    queue.append(path + [(nx, ny)])
+                    queue.append([[False], [path + (nx, ny)]])
 
 
 if __name__ == '__main__':
