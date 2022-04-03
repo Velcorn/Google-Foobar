@@ -17,5 +17,5 @@ def solution(n):
 
 
 if __name__ == "__main__":
+    print(solution('4'))
     print(solution('15'))
-    print(solution('31'))
