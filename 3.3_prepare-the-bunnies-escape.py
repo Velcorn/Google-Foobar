@@ -5,7 +5,8 @@ def solution(map):
     # While queue, if current node is goal, return len of path, if node already visited, continue
     # If not, add all possible moves to queue, and mark as visited; optionally remove a wall - single-use
     while queue:
-        removal, path = queue[0][0], queue.pop(0)[1]
+        rp = queue.pop(0)
+        removal, path = rp[0], rp[1]
         x, y = path[-1]
         if (x, y) == (len(map) - 1, len(map[0]) - 1):
             return len(path)
