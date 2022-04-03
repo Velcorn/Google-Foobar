@@ -1,12 +1,15 @@
-from itertools import combinations
-
-
 def solution(l):
-    lts = set()
-    for c in combinations(l, 3):
-        if c[2] % c[1] == 0 and c[1] % c[0] == 0:
-            lts.add(c)
-    return len(lts)
+    # Array to keep track of number of divisors for each number
+    a = [0] * len(l)
+    # Loop through each list index i, then loop through each sublist index j in l[:i],
+    # if l[i] is divisible by l[j], increment counter a[i] by 1 and lts counter by a[j]
+    lts = 0
+    for i in range(len(l)):
+        for j in range(i):
+            if l[i] % l[j] == 0:
+                a[i] += 1
+                lts += a[j]
+    return lts
 
 
 if __name__ == '__main__':
