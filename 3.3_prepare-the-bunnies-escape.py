@@ -15,10 +15,10 @@ def solution(map):
         for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
             nx, ny = x + dx, y + dy
             if 0 <= nx < len(map) and 0 <= ny < len(map[0]):
-                if map[nx][ny] == 1 and removal:
-                    queue.append([False, path + [(nx, ny)]])
-                else:
+                if map[nx][ny] == 0:
                     queue.append([removal, path + [(nx, ny)]])
+                elif removal:
+                    queue.append([False, path + [(nx, ny)]])
 
 
 if __name__ == '__main__':
