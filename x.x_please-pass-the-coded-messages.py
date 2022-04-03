@@ -1,9 +1,7 @@
 def solution(l):
-    # If sum of elements is less than 3, return 0
-    if sum(l) < 3:
-        return 0
-    # Get residue and residue classes of sum of l mod 3
+    # Get residue of sum of l mod 3
     r = sum(l) % 3
+    # Residue classes
     r1, r2 = {1, 4, 7}, {2, 5, 8}
     # While r is not 0, check if overlap between l and rc, else check other rc, remove min element from l and update r
     while r > 0:
