@@ -4,7 +4,7 @@ from itertools import combinations
 def solution(l):
     lts = set()
     for c in combinations(l, 3):
-        if (c[2] / c[1]).is_integer() and (c[1]/c[0]).is_integer():
+        if c[2] % c[1] == 0 and c[1] % c[0] == 0:
             lts.add(c)
     return len(lts)
 
