@@ -1,28 +1,30 @@
 def solution(map):
-    # BFS with 1 optional removal of a wall
+    # A* using Manhattan distance with 1 optional removal of a wall
     door = (len(map) - 1, len(map[0]) - 1)
-    removal = True
-    queue = [[removal, [(0, 0)]]]
+    md = door[0] + door[1] + 1
+    queue = [[True, md, 1, (0, 0)]]
     visited = set()
     # While queue, if current node is door, return len of path, if node already visited, continue
     # If not, mark as visited, add all possible moves to queue and sort queue by md
     # Optionally remove a wall - single-use
     while queue:
-        rp = queue.pop(0)
-        removal, path = rp[0], rp[1]
-        x, y = path[-1]
-        if (x, y) == door:
-            return len(path)
-        if (x, y) in visited:
+        rsn = queue.pop(0)
+        removal, md, steps, node = rsn[0], rsn[1], rsn[2], rsn[3]
+        if node == door:
+            return steps
+        if node in visited:
             continue
-        visited.add((x, y))
-        for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
-            nx, ny = x + dx, y + dy
+        visited.add(node)
+        for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
+            nx, ny = node[0] + dx, node[1] + dy
             if 0 <= nx <= door[0] and 0 <= ny <= door[1]:
+                md = door[0] - nx + door[1] - ny + 1
+                print (md)
                 if map[nx][ny] == 0:
-                    queue += [[removal, path + [(nx, ny)]]]
+                    queue += [[removal, md, steps + 1, (nx, ny)]]
                 elif removal:
-                    queue += [[False, path + [(nx, ny)]]]
+                    queue += [[False, md, steps + 1, (nx, ny)]]
+        queue = sorted(queue, key=lambda x: x[2])
 
 
 if __name__ == '__main__':
