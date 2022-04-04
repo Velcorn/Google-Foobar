@@ -8,8 +8,8 @@ def solution(map):
     # If not, mark as visited, add all possible moves to queue and sort queue by md
     # Optionally remove a wall - single-use
     while queue:
-        rsn = queue.pop(0)
-        removal, md, steps, node = rsn[0], rsn[1], rsn[2], rsn[3]
+        e = queue.pop(0)
+        removal, md, steps, node = e[0], e[1], e[2], e[3]
         if node == door:
             return steps
         if node in visited:
@@ -19,7 +19,6 @@ def solution(map):
             nx, ny = node[0] + dx, node[1] + dy
             if 0 <= nx <= door[0] and 0 <= ny <= door[1]:
                 md = door[0] - nx + door[1] - ny + 1
-                print (md)
                 if map[nx][ny] == 0:
                     queue += [[removal, md, steps + 1, (nx, ny)]]
                 elif removal:
