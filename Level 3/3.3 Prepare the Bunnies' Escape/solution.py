@@ -4,7 +4,7 @@ def solution(map):
     visited = set()
     queue = [[True, 1, (0, 0)]]
     # While queue, if neighbor node is door, return steps + 1, if node (under removal state) already visited, continue
-    # If not, mark as visited, add all possible moves to queue and sort queue by steps + Manhattan distance
+    # Else mark as visited, add all possible moves to queue and sort queue by (- removal + steps + Manhattan distance)
     while queue:
         e = queue.pop(0)
         removal, steps, node = e[0], e[1], e[2]
@@ -20,7 +20,7 @@ def solution(map):
                     queue += [[removal, steps + 1, (ny, nx)]]
                 elif removal:
                     queue += [[False, steps + 1, (ny, nx)]]
-        queue = sorted(queue, key=lambda x: x[1] + door[0] - x[2][0] + door[1] - x[2][1] + 1)
+        queue = sorted(queue, key=lambda x: -x[0] + x[1] + door[0] - x[2][0] + door[1] - x[2][1])
 
 
 if __name__ == '__main__':
