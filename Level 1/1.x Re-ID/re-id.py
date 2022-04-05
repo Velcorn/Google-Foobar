@@ -18,4 +18,7 @@ def solution(n)
         if prime:
         	string += str(i)
             primes += [i]
-        i += 2 
+        i += 2
+        
+        
+print(solution(3))
