@@ -1,18 +1,17 @@
 def int2base(n, b):
-    # Convert an integer n to base b
+    # Convert an integer n to base b as a string
     if n == 0:
-        return [0]
-    digits = []
+        return '0'
+    string = ''
     while n:
-        digits.append(str(int(n % b)))
+        string += str(int(n % b))
         n /= b
-    return ''.join(digits[::-1])
+    return string[::-1]
 
 
 def solution(n, b):
-    # Initialize ids generated so far and keep track of them in a set
-    ids = [n]
-    unique = set(n)
+    # Keep track of different IDs both in a set and a list
+    unique, ids = set(n), [n]
     while True:
         # Split n into digits, sort them and create x and y from the sorted digits
         digits = sorted([i for i in str(n)])
@@ -28,8 +27,8 @@ def solution(n, b):
         elif n in unique:
             return len(ids) - ids.index(n)
         else:
-            ids.append(n)
             unique.add(n)
+            ids.append(n)
 
 
 if __name__ == '__main__':
