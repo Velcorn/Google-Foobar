@@ -1,5 +1,10 @@
 def int2base(n, b):
-    # Convert an integer n to base b as a string
+    """
+    Convert an integer n to base b as a string
+    :param n: integer to convert
+    :param b: base to convert to
+    :return: a string representation of n in base b
+    """
     if n == 0:
         return '0'
     string = ''
@@ -17,7 +22,7 @@ def solution(n, b):
         digits = sorted([i for i in str(n)])
         x = ''.join(digits)
         y = ''.join(digits[::-1])
-        # Subtract x from y and convert the result to base b
+        # Subtract x from y and convert the result to base b, fill the missing zeros with '0'
         n = int2base(int(y, b) - int(x, b), b).zfill(len(n))
         # If n is '0', return 1
         # Elif check if n has been seen before, then return cycle length
