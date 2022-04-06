@@ -1,5 +1,6 @@
 def solution(x, y):
-    return list(set(x+y) - (set(x) & set(y)))[0]
+    # Set union - intersection = additional integer
+    return next(iter((set(x) | set(y)) - (set(x) & set(y))))
 
 
 if __name__ == '__main__':
