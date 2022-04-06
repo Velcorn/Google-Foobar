@@ -1,18 +1,12 @@
 def solution(s):
-    counts = {}
-    for i in range(len(s)):
-        for j in range(1, len(s) + 1):
-            ss = s
-            # If sequence is longer than remaining string, wrap around
-            if i+j >= len(s):
-                ss = s[i:]+s[:len(s)-j]
-            # Count occurrences of sequence
-            if ss[i:i+j] in counts:
-                counts[ss[i:i+j]] += 1
-            else:
-                counts[ss[i:i+j]] = 1
-    print (counts)
-    return max([v for k, v in counts.items() if len(s) - len(k) * v == 0])
+    length = len(s)
+    # Iterate over possible sequence length
+    for i in range(1, length + 1):
+        # Count occurrences of sequence of length i
+        count = s.count(s[:i])
+        # If sequence count * sequence length is equal to string length, we have the result
+        if count * i == length:
+            return count
 
 
 if __name__ == '__main__':
