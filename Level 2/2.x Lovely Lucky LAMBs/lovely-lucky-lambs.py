@@ -20,6 +20,5 @@ def solution(total_lambs):
 
 
 if __name__ == '__main__':
-    print (solution(2))
     print(solution(143))
     print(solution(10))
